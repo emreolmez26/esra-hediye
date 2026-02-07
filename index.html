@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <title>CYBER-NATURE // GİZLİ GÖREV</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens/radar.css">
+  <link rel="stylesheet" href="css/screens/orbit.css">
+  <link rel="stylesheet" href="css/screens/constellation.css">
+  <link rel="stylesheet" href="css/screens/camera.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="no-select">
+  
+  <!-- Loading Screen -->
+  <div class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">SİSTEM BAŞLATILIYOR...</div>
+  </div>
+  
+  <!-- Landscape Warning -->
+  <div class="landscape-warning">
+    <svg class="landscape-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="5" y="2" width="14" height="20" rx="2"/>
+      <line x1="12" y1="18" x2="12" y2="18"/>
+    </svg>
+    <p class="landscape-text">Lütfen telefonu dikey konuma getirin</p>
+  </div>
+  
+  <!-- Background Particles (Three.js) -->
+  <div id="particles-container" class="background-layer"></div>
+  
+  <!-- Grid Overlay -->
+  <div class="grid-overlay"></div>
+  
+  <!-- Top Progress Bar -->
+  <div class="top-progress">
+    <div class="top-progress-fill" style="width: 0%"></div>
+  </div>
+  
+  <!-- Stage Indicator -->
+  <div class="stage-indicator">
+    <div class="stage-dot"></div>
+    <div class="stage-dot"></div>
+    <div class="stage-dot"></div>
+    <div class="stage-dot"></div>
+  </div>
+  
+  <!-- Flash Overlay -->
+  <div id="flash-overlay" class="flash-overlay"></div>
+  
+  <!-- Main App Container -->
+  <div id="app">
+    
+    <!-- ==================== INTRO SCREEN ==================== -->
+    <section id="intro-screen" class="screen intro-screen">
+      <!-- Corner Decorations -->
+      <div class="corner-decoration corner-tl"></div>
+      <div class="corner-decoration corner-tr"></div>
+      <div class="corner-decoration corner-bl"></div>
+      <div class="corner-decoration corner-br"></div>
+      
+      <!-- Logo -->
+      <div class="intro-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      
+      <!-- Classification Badge -->
+      <div class="intro-classification">
+        <span class="status-dot"></span>
+        GİZLİ // SEVİYE-6
+      </div>
+      
+      <!-- Title -->
+      <h1 class="intro-title">CYBER-NATURE</h1>
+      
+      <!-- Subtitle -->
+      <p class="intro-subtitle">
+        Bir enerji sinyali tespit edildi. Kaynağı bulmak ve kilidi açmak için sensörlerini kullan.
+      </p>
+      
+      <!-- Start Button -->
+      <button class="btn btn-glow btn-lg intro-start-btn">
+        GÖREVE BAŞLA
+      </button>
+    </section>
+    
+    <!-- ==================== RADAR SCREEN (Stage 1) ==================== -->
+    <section id="radar-screen" class="screen radar-screen">
+      <!-- Header -->
+      <div class="screen-header">
+        <h2 class="screen-title">AJAN DOĞRULAMA</h2>
+        <div class="screen-stage">AŞAMA 1/4</div>
+      </div>
+      
+      <!-- Corner Data Displays -->
+      <div class="radar-data radar-data-tl data-stream"></div>
+      <div class="radar-data radar-data-tr data-stream"></div>
+      <div class="radar-data radar-data-bl data-stream"></div>
+      <div class="radar-data radar-data-br data-stream"></div>
+      
+      <!-- Fingerprint Scanner -->
+      <div class="fingerprint-wrapper">
+        <!-- Scan Ring -->
+        <div class="scan-ring"></div>
+        <div class="scan-ring scan-ring-2"></div>
+        <div class="scan-ring scan-ring-3"></div>
+        
+        <!-- Fingerprint Icon -->
+        <div class="fingerprint-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+          </svg>
+        </div>
+        
+        <!-- Progress Ring -->
+        <svg class="progress-ring" viewBox="0 0 200 200">
+          <circle class="progress-ring-bg" cx="100" cy="100" r="90"/>
+          <circle class="progress-ring-fill" cx="100" cy="100" r="90"/>
+        </svg>
+        
+        <!-- Scan Line -->
+        <div class="scan-line"></div>
+      </div>
+      
+      <!-- Status -->
+      <div class="fingerprint-status">
+        <span class="status-text">PARMAĞINI BASILI TUT</span>
+        <div class="status-progress">
+          <div class="status-progress-fill"></div>
+        </div>
+      </div>
+      
+      <!-- Instructions -->
+      <p class="radar-instructions">Kimliğini doğrulamak için parmağını tarayıcıya bas ve bekle</p>
+    </section>
+    
+    <!-- ==================== ORBIT SCREEN (Stage 2) ==================== -->
+    <section id="orbit-screen" class="screen orbit-screen">
+      <!-- Header -->
+      <div class="screen-header">
+        <h2 class="screen-title">GÜVENLİK SORUSU</h2>
+        <div class="screen-stage">AŞAMA 2/4</div>
+      </div>
+      
+      <!-- Question Container -->
+      <div class="question-wrapper">
+        <!-- Question Box -->
+        <div class="question-box">
+          <div class="question-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <h3 class="question-text">Esra nasıl bir kızdır?</h3>
+          <p class="question-hint">İpucu: rahat</p>
+        </div>
+        
+        <!-- Answer Input -->
+        <div class="answer-container">
+          <input type="text" class="answer-input" placeholder="Cevabını yaz..." autocomplete="off" spellcheck="false">
+          <button class="answer-submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Feedback -->
+        <div class="answer-feedback"></div>
+      </div>
+      
+      <!-- Status -->
+      <p class="orbit-status">Cevabı gir ve onayla</p>
+    </section>
+    
+    <!-- ==================== CONSTELLATION SCREEN (Stage 3) ==================== -->
+    <section id="constellation-screen" class="screen constellation-screen">
+      <!-- Header -->
+      <div class="screen-header">
+        <h2 class="screen-title">ÇİÇEK OLUŞTUR</h2>
+        <div class="screen-stage">AŞAMA 3/4</div>
+      </div>
+      
+      <!-- Flower Builder Area -->
+      <div class="flower-builder">
+        <!-- Corner Markers -->
+        <div class="corner-marker tl"></div>
+        <div class="corner-marker tr"></div>
+        <div class="corner-marker bl"></div>
+        <div class="corner-marker br"></div>
+        
+        <!-- Center Target -->
+        <div class="flower-center-target">
+          <div class="center-ring"></div>
+          <div class="center-ring center-ring-2"></div>
+          <div class="center-dot"></div>
+        </div>
+        
+        <!-- Petals (will be positioned by JS) -->
+        <div class="petals-container">
+          <div class="petal petal-1" data-index="0">
+            <svg viewBox="0 0 60 80">
+              <ellipse cx="30" cy="45" rx="25" ry="35" fill="url(#petalGradient1)"/>
+              <defs>
+                <linearGradient id="petalGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1e90ff"/>
+                  <stop offset="100%" style="stop-color:#4169e1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="petal petal-2" data-index="1">
+            <svg viewBox="0 0 60 80">
+              <ellipse cx="30" cy="45" rx="25" ry="35" fill="url(#petalGradient2)"/>
+              <defs>
+                <linearGradient id="petalGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1e90ff"/>
+                  <stop offset="100%" style="stop-color:#4169e1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="petal petal-3" data-index="2">
+            <svg viewBox="0 0 60 80">
+              <ellipse cx="30" cy="45" rx="25" ry="35" fill="url(#petalGradient3)"/>
+              <defs>
+                <linearGradient id="petalGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1e90ff"/>
+                  <stop offset="100%" style="stop-color:#4169e1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="petal petal-4" data-index="3">
+            <svg viewBox="0 0 60 80">
+              <ellipse cx="30" cy="45" rx="25" ry="35" fill="url(#petalGradient4)"/>
+              <defs>
+                <linearGradient id="petalGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1e90ff"/>
+                  <stop offset="100%" style="stop-color:#4169e1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="petal petal-5" data-index="4">
+            <svg viewBox="0 0 60 80">
+              <ellipse cx="30" cy="45" rx="25" ry="35" fill="url(#petalGradient5)"/>
+              <defs>
+                <linearGradient id="petalGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1e90ff"/>
+                  <stop offset="100%" style="stop-color:#4169e1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="petal petal-6" data-index="5">
+            <svg viewBox="0 0 60 80">
+              <ellipse cx="30" cy="45" rx="25" ry="35" fill="url(#petalGradient6)"/>
+              <defs>
+                <linearGradient id="petalGradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1e90ff"/>
+                  <stop offset="100%" style="stop-color:#4169e1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Progress -->
+      <div class="flower-progress">
+        <span class="progress-count">0</span> / <span class="progress-total">6</span> YAPRAK
+      </div>
+      
+      <!-- Instructions -->
+      <p class="constellation-instructions">Yaprakları sürükleyip merkeze yerleştir</p>
+      
+      <!-- Reset Button -->
+      <button class="reset-button">SIFIRLA</button>
+    </section>
+    
+    <!-- ==================== CAMERA SCREEN (Stage 4) ==================== -->
+    <section id="camera-screen" class="screen camera-screen">
+      
+      <!-- Camera View -->
+      <div class="camera-wrapper">
+        <!-- Video Element -->
+        <video class="camera-video" autoplay playsinline muted style="display: none;"></video>
+        
+        <!-- Fallback (No Camera) - Hidden by default -->
+        <div class="camera-fallback" style="display: none;">
+          <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          <p>Kamera Simülasyonu</p>
+        </div>
+        
+        <!-- Permission Screen - Visible by default -->
+        <div class="camera-permission">
+          <svg class="permission-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          <p class="permission-text">Son doğrulama için kamera erişimi gerekli</p>
+          <button class="btn btn-primary camera-start-btn">KAMERAYI AKTİFLEŞTİR</button>
+        </div>
+        
+        <!-- HUD Overlay -->
+        <div class="hud-overlay">
+          <!-- Corners -->
+          <div class="hud-corner hud-corner-tl"></div>
+          <div class="hud-corner hud-corner-tr"></div>
+          <div class="hud-corner hud-corner-bl"></div>
+          <div class="hud-corner hud-corner-br"></div>
+          
+          <!-- Face Frame -->
+          <div class="face-frame">
+            <div class="face-scan"></div>
+          </div>
+          
+          <!-- Crosshair -->
+          <div class="crosshair"></div>
+          
+          <!-- Decorative Circles -->
+          <div class="hud-circle hud-circle-1"></div>
+          <div class="hud-circle hud-circle-2"></div>
+          
+          <!-- Data Panels -->
+          <div class="hud-data-tl"></div>
+          <div class="hud-data-tr"></div>
+          <div class="hud-data-left"></div>
+          <div class="hud-data-right"></div>
+          
+          <!-- Horizontal Lines -->
+          <div class="hud-line-h hud-line-left"></div>
+          <div class="hud-line-h hud-line-right"></div>
+          
+          <!-- Status Bar -->
+          <div class="hud-status-bar">
+            <span class="status-label">ANALİZ EDİLİYOR</span>
+            <div class="status-bar">
+              <div class="status-fill"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Verification Success -->
+        <div class="verification-success">
+          <div class="success-icon-wrapper">
+            <svg class="success-checkmark" viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          
+          <div class="success-message">
+            <h2 class="success-title">DOĞRULAMA BAŞARILI</h2>
+            <p class="success-subtitle">Kimlik Onaylandı. Enerji Kristali Lokasyonu:</p>
+          </div>
+          
+          <div class="location-reveal">
+            <div class="location-label">FİZİKSEL KOPYA KONUMU</div>
+            <div class="location-text">REİS'İN CEBİ</div>
+          </div>
+          
+          <div class="success-heart">💎</div>
+        </div>
+      </div>
+      
+      <!-- Controls -->
+      <div class="camera-controls">
+        <button class="verify-button">
+          <svg class="verify-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </button>
+        <span class="verify-text">DOĞRULA</span>
+      </div>
+      
+    </section>
+    
+  </div>
+  
+  <!-- Vignette Effect -->
+  <div class="vignette"></div>
+  
+  <!-- External Libraries (CDN) -->
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <!-- Main Application (ES Modules) -->
+  <script type="module" src="js/main.js"></script>
+  
+</body>
+</html>

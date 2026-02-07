@@ -1,0 +1,304 @@
+/* ==========================================================================
+   RADAR.CSS - Aşama 1: Parmak İzi Tarama (Ajan Doğrulama)
+   Cyber-Nature Theme | Fingerprint Scanner Styles
+   ========================================================================== */
+
+/* Ana Container */
+.radar-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg);
+}
+
+/* Köşe Data Displays */
+.radar-data {
+  position: fixed;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  z-index: 10;
+}
+
+.radar-data-tl { top: 80px; left: 15px; text-align: left; }
+.radar-data-tr { top: 80px; right: 15px; text-align: right; }
+.radar-data-bl { bottom: 100px; left: 15px; text-align: left; }
+.radar-data-br { bottom: 100px; right: 15px; text-align: right; }
+
+/* ==========================================================================
+   FINGERPRINT SCANNER
+   ========================================================================== */
+
+.fingerprint-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Scan Rings */
+.scan-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  opacity: 0.3;
+}
+
+.scan-ring-2 {
+  width: 130%;
+  height: 130%;
+  opacity: 0.2;
+}
+
+.scan-ring-3 {
+  width: 160%;
+  height: 160%;
+  opacity: 0.1;
+}
+
+/* Waiting state - pulse animation */
+.fingerprint-wrapper.waiting .scan-ring {
+  animation: scanPulse 2s ease-in-out infinite;
+}
+
+.fingerprint-wrapper.waiting .scan-ring-2 {
+  animation: scanPulse 2s ease-in-out infinite 0.3s;
+}
+
+.fingerprint-wrapper.waiting .scan-ring-3 {
+  animation: scanPulse 2s ease-in-out infinite 0.6s;
+}
+
+@keyframes scanPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+/* Scanning state */
+.fingerprint-wrapper.scanning .scan-ring {
+  animation: scanActive 0.5s ease-in-out infinite alternate;
+  border-color: #00ff88;
+}
+
+.fingerprint-wrapper.scanning .scan-ring-2 {
+  animation: scanActive 0.5s ease-in-out infinite alternate 0.1s;
+  border-color: #00ff88;
+}
+
+.fingerprint-wrapper.scanning .scan-ring-3 {
+  animation: scanActive 0.5s ease-in-out infinite alternate 0.2s;
+  border-color: #00ff88;
+}
+
+@keyframes scanActive {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Success state */
+.fingerprint-wrapper.success .scan-ring,
+.fingerprint-wrapper.success .scan-ring-2,
+.fingerprint-wrapper.success .scan-ring-3 {
+  border-color: var(--color-success);
+  animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Fingerprint Icon */
+.fingerprint-icon {
+  width: 80px;
+  height: 80px;
+  color: var(--color-primary);
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.fingerprint-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fingerprint-wrapper.waiting .fingerprint-icon {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px var(--color-primary));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px var(--color-primary));
+  }
+}
+
+.fingerprint-wrapper.scanning .fingerprint-icon {
+  color: #00ff88;
+  animation: none;
+  filter: drop-shadow(0 0 20px #00ff88);
+}
+
+.fingerprint-wrapper.success .fingerprint-icon {
+  color: var(--color-success);
+  filter: drop-shadow(0 0 30px var(--color-success));
+}
+
+/* Progress Ring (SVG) */
+.progress-ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: rgba(0, 255, 255, 0.1);
+  stroke-width: 4;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 565.48; /* 2 * PI * 90 */
+  stroke-dashoffset: 565.48;
+  transition: stroke-dashoffset 0.1s ease;
+}
+
+.fingerprint-wrapper.scanning .progress-ring-fill {
+  stroke: #00ff88;
+}
+
+.fingerprint-wrapper.success .progress-ring-fill {
+  stroke: var(--color-success);
+}
+
+/* Scan Line */
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  opacity: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.scan-line.active {
+  opacity: 1;
+  animation: scanLineMove 1s ease-in-out infinite;
+}
+
+@keyframes scanLineMove {
+  0% {
+    top: 20%;
+  }
+  50% {
+    top: 80%;
+  }
+  100% {
+    top: 20%;
+  }
+}
+
+/* ==========================================================================
+   STATUS SECTION
+   ========================================================================== */
+
+.fingerprint-status {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.fingerprint-status .status-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-primary);
+  letter-spacing: 0.15em;
+  text-shadow: var(--glow-text);
+}
+
+.status-progress {
+  width: 200px;
+  height: 4px;
+  background: rgba(0, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.status-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-primary), #00ff88);
+  border-radius: var(--radius-sm);
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* Instructions */
+.radar-instructions {
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 380px) {
+  .fingerprint-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .fingerprint-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .progress-ring {
+    width: 160px;
+    height: 160px;
+  }
+}

@@ -1,0 +1,336 @@
+/* ==========================================================================
+   CONSTELLATION.CSS - Aşama 3: Çiçek Oluşturma
+   Cyber-Nature Theme | Petal Drag & Drop Styles
+   ========================================================================== */
+
+/* Ana Container */
+.constellation-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+/* Flower Builder Area */
+.flower-builder {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 450px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Corner Markers */
+.corner-marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--color-primary);
+  border-style: solid;
+  opacity: 0.5;
+}
+
+.corner-marker.tl { 
+  top: 10px; left: 10px; 
+  border-width: 2px 0 0 2px; 
+}
+.corner-marker.tr { 
+  top: 10px; right: 10px; 
+  border-width: 2px 2px 0 0; 
+}
+.corner-marker.bl { 
+  bottom: 10px; left: 10px; 
+  border-width: 0 0 2px 2px; 
+}
+.corner-marker.br { 
+  bottom: 10px; right: 10px; 
+  border-width: 0 2px 2px 0; 
+}
+
+/* ==========================================================================
+   CENTER TARGET
+   ========================================================================== */
+
+.flower-center-target {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(0, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  animation: centerPulse 2s ease-in-out infinite;
+}
+
+.center-ring-2 {
+  width: 80%;
+  height: 80%;
+  animation-delay: 0.5s;
+}
+
+@keyframes centerPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.center-dot {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #fff 0%, var(--color-primary) 100%);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+/* Center target near state */
+.flower-center-target.near .center-ring {
+  border-color: #00ff88;
+  border-style: solid;
+  animation: none;
+}
+
+.flower-center-target.near .center-dot {
+  background: radial-gradient(circle, #fff 0%, #00ff88 100%);
+  box-shadow: 0 0 30px #00ff88;
+}
+
+/* ==========================================================================
+   PETALS
+   ========================================================================== */
+
+.petals-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  cursor: grab;
+  pointer-events: all;
+  touch-action: none;
+  transition: filter 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.petal svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 5px rgba(30, 144, 255, 0.5));
+}
+
+.petal:active {
+  cursor: grabbing;
+}
+
+.petal.dragging {
+  transform: scale(1.1) !important;
+  filter: drop-shadow(0 0 15px rgba(30, 144, 255, 0.8));
+  z-index: 100 !important;
+}
+
+.petal.placed {
+  pointer-events: none;
+  cursor: default;
+}
+
+.petal.placed svg {
+  filter: drop-shadow(0 0 10px rgba(30, 144, 255, 0.6));
+}
+
+/* ==========================================================================
+   PROGRESS
+   ========================================================================== */
+
+.flower-progress {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+.flower-progress .progress-count {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* Instructions */
+.constellation-instructions {
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+/* Reset Button */
+.reset-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: transparent;
+  border: 1px solid rgba(255, 100, 100, 0.5);
+  border-radius: var(--radius-md);
+  color: rgba(255, 100, 100, 0.8);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-button:hover,
+.reset-button:active {
+  background: rgba(255, 100, 100, 0.1);
+  border-color: rgba(255, 100, 100, 0.8);
+}
+
+/* ==========================================================================
+   NECKLACE REVEAL OVERLAY
+   ========================================================================== */
+
+.necklace-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.necklace-overlay.show {
+  opacity: 1;
+}
+
+.necklace-content {
+  text-align: center;
+  padding: var(--spacing-xl);
+  max-width: 350px;
+}
+
+.necklace-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-lg);
+  text-shadow: var(--glow-text);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.necklace-image {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto var(--spacing-lg);
+  border: 3px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glow-lg);
+  background: #fff;
+}
+
+.necklace-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.necklace-message {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.necklace-hint {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-success);
+  padding: var(--spacing-md);
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-md);
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+.necklace-continue-btn {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.necklace-continue-btn:hover,
+.necklace-continue-btn:active {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: var(--glow-md);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    text-shadow: 0 0 10px currentColor;
+  }
+  50% { 
+    text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 380px) {
+  .flower-builder {
+    height: 400px;
+  }
+  
+  .petal {
+    width: 50px;
+    height: 70px;
+  }
+  
+  .flower-center-target {
+    width: 100px;
+    height: 100px;
+  }
+}

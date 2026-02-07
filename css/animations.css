@@ -1,0 +1,426 @@
+/* ==========================================================================
+   ANIMATIONS.CSS - Keyframe Animasyonları
+   Cyber-Nature Theme | Reusable Animations
+   ========================================================================== */
+
+/* ==================== TEMEL ANİMASYONLAR ==================== */
+
+/* Fade In/Out */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==================== PULSE VE GLOW ANİMASYONLARI ==================== */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--color-primary), 
+                0 0 10px var(--color-primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-primary), 
+                0 0 40px var(--color-primary-glow),
+                0 0 60px var(--color-primary-glow);
+  }
+}
+
+@keyframes pulseGlowText {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--color-primary),
+                 0 0 20px var(--color-primary);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--color-primary),
+                 0 0 40px var(--color-primary),
+                 0 0 60px var(--color-primary);
+  }
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: var(--glow-text);
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px var(--color-primary));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--color-primary)) 
+            drop-shadow(0 0 40px var(--color-primary));
+  }
+}
+
+/* ==================== DÖNDÜRME ANİMASYONLARI ==================== */
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+/* ==================== RADAR ANİMASYONLARI ==================== */
+
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes radarRing {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ==================== GLITCH ANİMASYONLARI ==================== */
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitchText {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  5% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(-3px, 0);
+  }
+  10% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(3px, 0);
+  }
+  15% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-2px, 0);
+  }
+  20%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+}
+
+@keyframes chromatic {
+  0%, 100% {
+    text-shadow: 
+      -2px 0 var(--color-danger),
+      2px 0 var(--color-primary);
+  }
+  50% {
+    text-shadow: 
+      2px 0 var(--color-danger),
+      -2px 0 var(--color-primary);
+  }
+}
+
+/* ==================== ÇİZGİ ANİMASYONLARI ==================== */
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes lineGlow {
+  0%, 100% {
+    stroke: var(--color-primary);
+    filter: drop-shadow(0 0 2px var(--color-primary));
+  }
+  50% {
+    stroke: var(--color-primary);
+    filter: drop-shadow(0 0 10px var(--color-primary))
+            drop-shadow(0 0 20px var(--color-primary));
+  }
+}
+
+/* ==================== DATA AKIŞI ANİMASYONLARI ==================== */
+
+@keyframes dataFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== HUD ANİMASYONLARI ==================== */
+
+@keyframes scanVertical {
+  0% {
+    top: 0;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.5;
+  }
+}
+
+@keyframes scanHorizontal {
+  0% {
+    left: 0;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.5;
+  }
+}
+
+@keyframes targetLock {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes cornerPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ==================== FLASH VE EXPLOSION ANİMASYONLARI ==================== */
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes explosion {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ==================== SUCCESS ANİMASYONLARI ==================== */
+
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 255, 136, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+  }
+}
+
+@keyframes celebrate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+
+.animate-fadeIn { animation: fadeIn 0.5s ease forwards; }
+.animate-fadeInUp { animation: fadeInUp 0.6s ease forwards; }
+.animate-fadeInDown { animation: fadeInDown 0.6s ease forwards; }
+.animate-fadeInScale { animation: fadeInScale 0.5s ease forwards; }
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }
+.animate-pulseGlow { animation: pulseGlow 2s ease-in-out infinite; }
+.animate-rotate { animation: rotate 10s linear infinite; }
+.animate-rotateSlow { animation: rotateSlow 20s linear infinite; }
+.animate-glitch { animation: glitch 0.3s ease infinite; }
+.animate-neonFlicker { animation: neonFlicker 3s infinite; }
+.animate-blink { animation: blink 1s step-end infinite; }
+
+/* Animation Delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Animation Durations */
+.duration-300 { animation-duration: 0.3s; }
+.duration-500 { animation-duration: 0.5s; }
+.duration-700 { animation-duration: 0.7s; }
+.duration-1000 { animation-duration: 1s; }
+.duration-2000 { animation-duration: 2s; }
