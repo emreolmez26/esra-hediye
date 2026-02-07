@@ -67,7 +67,11 @@ const CameraScreen = {
       hudDataRight: Helpers.$('.hud-data-right'),
       statusFill: Helpers.$('.status-fill'),
       permissionScreen: Helpers.$('.camera-permission'),
-      permissionBtn: Helpers.$('.camera-start-btn')
+      permissionBtn: Helpers.$('.camera-start-btn'),
+      photoPreview: Helpers.$('.photo-preview'),
+      photoCanvas: Helpers.$('.photo-canvas'),
+      downloadBtn: Helpers.$('.photo-download-btn'),
+      continueBtn: Helpers.$('.photo-continue-btn')
     };
   },
   
@@ -81,6 +85,14 @@ const CameraScreen = {
     
     if (this.elements.permissionBtn) {
       this.elements.permissionBtn.addEventListener('click', () => this.initCamera());
+    }
+    
+    if (this.elements.downloadBtn) {
+      this.elements.downloadBtn.addEventListener('click', () => this.downloadPhoto());
+    }
+    
+    if (this.elements.continueBtn) {
+      this.elements.continueBtn.addEventListener('click', () => this.continueToSuccess());
     }
   },
   
@@ -229,13 +241,82 @@ const CameraScreen = {
     
     Haptic.heavy();
     
+    // Fotoğrafı yakala
+    this.capturePhoto();
+    
     // Flash efekti
     await this.flashEffect();
     
     // Kısa bekleme
-    await Helpers.delay(500);
+    await Helpers.delay(300);
     
-    // Doğrulama başarılı
+    // Fotoğraf önizlemesini göster
+    this.showPhotoPreview();
+  },
+  
+  /**
+   * Fotoğrafı yakala
+   */
+  capturePhoto() {
+    if (!this.elements.video || !this.elements.photoCanvas) return;
+    
+    const video = this.elements.video;
+    const canvas = this.elements.photoCanvas;
+    const ctx = canvas.getContext('2d');
+    
+    // Canvas boyutunu video boyutuna ayarla
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    // Videoyu canvas'a çiz
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  },
+  
+  /**
+   * Fotoğraf önizlemesini göster
+   */
+  showPhotoPreview() {
+    if (this.elements.photoPreview) {
+      this.elements.photoPreview.style.display = 'flex';
+    }
+    
+    // HUD'ı gizle
+    const hudOverlay = Helpers.$('.hud-overlay');
+    if (hudOverlay) {
+      hudOverlay.style.display = 'none';
+    }
+    
+    // Kontrolları gizle
+    const controls = Helpers.$('.camera-controls');
+    if (controls) {
+      controls.style.display = 'none';
+    }
+  },
+  
+  /**
+   * Fotoğrafı indir
+   */
+  downloadPhoto() {
+    if (!this.elements.photoCanvas) return;
+    
+    const link = document.createElement('a');
+    link.download = 'cyber-nature-selfie.png';
+    link.href = this.elements.photoCanvas.toDataURL('image/png');
+    link.click();
+    
+    Haptic.medium();
+  },
+  
+  /**
+   * Başarı ekranına devam et
+   */
+  continueToSuccess() {
+    // Önizlemeyi gizle
+    if (this.elements.photoPreview) {
+      this.elements.photoPreview.style.display = 'none';
+    }
+    
+    // Başarı ekranını göster
     this.showSuccess();
   },
   
