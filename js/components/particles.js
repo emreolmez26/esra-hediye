@@ -81,12 +81,12 @@ const Particles = {
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     geometry.userData.velocities = velocities;
 
-    // Parçacık materyali
+    // Parçacık materyali - Yıldız rengi
     const material = new THREE.PointsMaterial({
-      color: 0x00ffff,
-      size: 0.5,
+      color: 0xffffff,
+      size: 0.8,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.9,
       blending: THREE.AdditiveBlending,
     });
 

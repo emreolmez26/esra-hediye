@@ -50,20 +50,21 @@
 
 .intro-title {
   font-family: var(--font-primary);
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  color: var(--color-primary);
-  text-shadow: var(--glow-text);
-  letter-spacing: 0.3em;
-  margin-bottom: var(--spacing-sm);
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: #FFD700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 182, 193, 0.5);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
 }
 
 .intro-subtitle {
   font-family: var(--font-secondary);
-  font-size: 0.9rem;
-  color: var(--color-text-dim);
-  letter-spacing: 0.15em;
-  max-width: 280px;
-  line-height: 1.6;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.1em;
+  max-width: 320px;
+  line-height: 1.8;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
 }
 
 .intro-classification {
@@ -77,15 +78,9 @@
   animation: neonFlicker 3s infinite;
 }
 
-/* Progress Bar (Top) */
+/* Progress Bar (Top) - Gizli */
 .top-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: rgba(0, 255, 255, 0.1);
-  z-index: var(--z-notification);
+  display: none;
 }
 
 .top-progress-fill {
@@ -95,15 +90,9 @@
   transition: width 0.5s ease;
 }
 
-/* Stage Indicator */
+/* Stage Indicator - Gizli */
 .stage-indicator {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: var(--spacing-sm);
-  z-index: var(--z-overlay);
+  display: none;
 }
 
 .stage-dot {
