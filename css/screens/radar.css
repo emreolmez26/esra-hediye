@@ -13,15 +13,9 @@
   padding: var(--spacing-lg);
 }
 
-/* Köşe Data Displays */
+/* Köşe Data Displays - Gizli (Romantik tema) */
 .radar-data {
-  position: fixed;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--color-text-muted);
-  letter-spacing: 0.05em;
-  line-height: 1.6;
-  z-index: 10;
+  display: none;
 }
 
 .radar-data-tl { top: 80px; left: 15px; text-align: left; }
@@ -45,14 +39,15 @@
   user-select: none;
 }
 
-/* Scan Rings */
+/* Scan Rings - Altın sarısı */
 .scan-ring {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 2px solid var(--color-primary);
+  border: 2px solid #FFD700;
   border-radius: var(--radius-full);
-  opacity: 0.3;
+  opacity: 0.4;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .scan-ring-2 {
@@ -91,20 +86,21 @@
   }
 }
 
-/* Scanning state */
+/* Scanning state - Pembe */
 .fingerprint-wrapper.scanning .scan-ring {
   animation: scanActive 0.5s ease-in-out infinite alternate;
-  border-color: #00ff88;
+  border-color: #FF69B4;
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
 }
 
 .fingerprint-wrapper.scanning .scan-ring-2 {
   animation: scanActive 0.5s ease-in-out infinite alternate 0.1s;
-  border-color: #00ff88;
+  border-color: #FF69B4;
 }
 
 .fingerprint-wrapper.scanning .scan-ring-3 {
   animation: scanActive 0.5s ease-in-out infinite alternate 0.2s;
-  border-color: #00ff88;
+  border-color: #FF69B4;
 }
 
 @keyframes scanActive {
@@ -135,13 +131,14 @@
   }
 }
 
-/* Fingerprint Icon */
+/* Star Icon - Altın sarısı */
 .fingerprint-icon {
   width: 80px;
   height: 80px;
-  color: var(--color-primary);
+  color: #FFD700;
   z-index: 5;
   transition: all 0.3s ease;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
 }
 
 .fingerprint-icon svg {
@@ -156,23 +153,23 @@
 @keyframes iconPulse {
   0%, 100% {
     opacity: 0.7;
-    filter: drop-shadow(0 0 5px var(--color-primary));
+    filter: drop-shadow(0 0 10px #FFD700);
   }
   50% {
     opacity: 1;
-    filter: drop-shadow(0 0 15px var(--color-primary));
+    filter: drop-shadow(0 0 25px #FFD700);
   }
 }
 
 .fingerprint-wrapper.scanning .fingerprint-icon {
-  color: #00ff88;
+  color: #FF69B4;
   animation: none;
-  filter: drop-shadow(0 0 20px #00ff88);
+  filter: drop-shadow(0 0 20px #FF69B4);
 }
 
 .fingerprint-wrapper.success .fingerprint-icon {
-  color: var(--color-success);
-  filter: drop-shadow(0 0 30px var(--color-success));
+  color: #98FB98;
+  filter: drop-shadow(0 0 30px #98FB98);
 }
 
 /* Progress Ring (SVG) */
@@ -185,13 +182,13 @@
 
 .progress-ring-bg {
   fill: none;
-  stroke: rgba(0, 255, 255, 0.1);
+  stroke: rgba(255, 215, 0, 0.15);
   stroke-width: 4;
 }
 
 .progress-ring-fill {
   fill: none;
-  stroke: var(--color-primary);
+  stroke: #FFD700;
   stroke-width: 4;
   stroke-linecap: round;
   stroke-dasharray: 565.48; /* 2 * PI * 90 */
@@ -200,11 +197,11 @@
 }
 
 .fingerprint-wrapper.scanning .progress-ring-fill {
-  stroke: #00ff88;
+  stroke: #FF69B4;
 }
 
 .fingerprint-wrapper.success .progress-ring-fill {
-  stroke: var(--color-success);
+  stroke: #98FB98;
 }
 
 /* Scan Line */
@@ -212,7 +209,7 @@
   position: absolute;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  background: linear-gradient(90deg, transparent, #FF69B4, transparent);
   opacity: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -250,15 +247,15 @@
 .fingerprint-status .status-text {
   font-family: var(--font-display);
   font-size: 1rem;
-  color: var(--color-primary);
-  letter-spacing: 0.15em;
-  text-shadow: var(--glow-text);
+  color: #FFD700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 .status-progress {
   width: 200px;
   height: 4px;
-  background: rgba(0, 255, 255, 0.2);
+  background: rgba(255, 215, 0, 0.2);
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
@@ -266,7 +263,7 @@
 .status-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--color-primary), #00ff88);
+  background: linear-gradient(90deg, #FFD700, #FF69B4);
   border-radius: var(--radius-sm);
   transition: width 0.1s ease;
   box-shadow: 0 0 10px currentColor;

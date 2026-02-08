@@ -105,7 +105,7 @@ const RadarScreen = {
       this.elements.scanLine.classList.add("active");
     }
 
-    this.updateStatus("TARANIYOR...");
+    this.updateStatus("Dileğin kabul ediliyor...");
 
     // Animasyon döngüsünü başlat
     this.animateScan();
@@ -194,7 +194,7 @@ const RadarScreen = {
       this.elements.statusProgress.style.width = "0%";
     }
 
-    this.updateStatus("PARMAĞINI BASILI TUT");
+    this.updateStatus("Yıldıza dokunmaya devam et");
   },
 
   /**
@@ -216,7 +216,7 @@ const RadarScreen = {
       this.elements.scanLine.classList.remove("active");
     }
 
-    this.updateStatus("KİMLİK DOĞRULANDI ✓");
+    this.updateStatus("Dileğin kabul edildi ✨");
 
     // Başarı animasyonu
     await this.playSuccessAnimation();
@@ -243,7 +243,7 @@ const RadarScreen = {
     // Wrapper glow
     if (this.elements.wrapper) {
       gsap.to(this.elements.wrapper, {
-        boxShadow: "0 0 60px rgba(0, 255, 136, 0.8)",
+        boxShadow: "0 0 60px rgba(255, 215, 0, 0.8)",
         duration: 0.5,
       });
     }
@@ -262,33 +262,8 @@ const RadarScreen = {
    * Data stream başlat
    */
   startDataStream() {
-    this.dataInterval = setInterval(() => {
-      if (this.elements.dataTL) {
-        this.elements.dataTL.innerHTML = `
-          <div>TİME: ${Helpers.getCurrentTime()}</div>
-          <div>SYS: READY</div>
-        `;
-      }
-
-      if (this.elements.dataTR) {
-        this.elements.dataTR.innerHTML = `
-          <div>SEC.LVL: HIGH</div>
-          <div>FREQ: ${Helpers.random(2400, 2500).toFixed(1)}MHz</div>
-        `;
-      }
-
-      if (this.elements.dataBL) {
-        this.elements.dataBL.innerHTML = `
-          <div>0x${Helpers.randomHex(8)}</div>
-        `;
-      }
-
-      if (this.elements.dataBR) {
-        this.elements.dataBR.innerHTML = `
-          <div>SCAN: ${this.isScanning ? "ACTIVE" : "IDLE"}</div>
-        `;
-      }
-    }, 500);
+    // Romantik tema için data stream'i devre dışı bırak
+    // Köşe verileri artık kullanılmıyor
   },
 
   /**

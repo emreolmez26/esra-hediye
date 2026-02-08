@@ -25,19 +25,19 @@
 
 /* Question Box */
 .question-box {
-  background: rgba(0, 255, 255, 0.05);
-  border: 2px solid var(--color-primary);
+  background: rgba(255, 215, 0, 0.05);
+  border: 2px solid #FFD700;
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   text-align: center;
   transition: all 0.5s ease;
-  box-shadow: var(--glow-md);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .question-box.unlocked {
-  border-color: var(--color-success);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-  background: rgba(0, 255, 136, 0.1);
+  border-color: #FF69B4;
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+  background: rgba(255, 105, 180, 0.1);
 }
 
 /* Question Icon */
@@ -45,7 +45,7 @@
   width: 60px;
   height: 60px;
   margin: 0 auto var(--spacing-md);
-  color: var(--color-primary);
+  color: #FFD700;
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .question-box.unlocked .question-icon {
-  color: var(--color-success);
+  color: #FF69B4;
   animation: none;
 }
 
@@ -74,7 +74,7 @@
   font-size: 0.85rem;
   color: var(--color-text-muted);
   padding: var(--spacing-sm) var(--spacing-md);
-  background: rgba(0, 255, 255, 0.1);
+  background: rgba(255, 215, 0, 0.1);
   border-radius: var(--radius-sm);
   display: inline-block;
 }
@@ -108,14 +108,14 @@
 }
 
 .answer-input:focus {
-  border-color: var(--color-primary);
-  box-shadow: var(--glow-sm);
+  border-color: #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .answer-input.correct {
-  border-color: var(--color-success);
-  background: rgba(0, 255, 136, 0.1);
-  color: var(--color-success);
+  border-color: #FF69B4;
+  background: rgba(255, 105, 180, 0.1);
+  color: #FF69B4;
 }
 
 .answer-input.shake {
@@ -128,9 +128,9 @@
   width: 60px;
   height: 60px;
   background: transparent;
-  border: 2px solid var(--color-primary);
+  border: 2px solid #FFD700;
   border-radius: var(--radius-md);
-  color: var(--color-primary);
+  color: #FFD700;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -145,9 +145,9 @@
 
 .answer-submit:hover,
 .answer-submit:active {
-  background: var(--color-primary);
+  background: #FFD700;
   color: var(--color-bg);
-  box-shadow: var(--glow-md);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
 /* Answer Feedback */
@@ -167,9 +167,9 @@
 }
 
 .answer-feedback.success {
-  color: var(--color-success);
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid var(--color-success);
+  color: #FF69B4;
+  background: rgba(255, 105, 180, 0.1);
+  border: 1px solid #FF69B4;
 }
 
 .answer-feedback.error {
@@ -188,7 +188,7 @@
 }
 
 .orbit-status.success {
-  color: var(--color-success);
+  color: #FF69B4;
   animation: pulseGlow 1s ease-in-out infinite;
 }
 

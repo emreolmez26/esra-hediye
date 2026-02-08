@@ -19,7 +19,7 @@
   width: 100%;
   max-width: 350px;
   height: 450px;
-  border: 1px solid rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: var(--radius-lg);
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -27,7 +27,7 @@
 
 /* Corner Markers */
 .corner-marker {
-  position: absolute;
+  display: none;
   width: 20px;
   height: 20px;
   border-color: var(--color-primary);
@@ -72,7 +72,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 2px dashed rgba(0, 255, 255, 0.3);
+  border: 2px dashed rgba(255, 215, 0, 0.3);
   border-radius: var(--radius-full);
   animation: centerPulse 2s ease-in-out infinite;
 }
@@ -97,21 +97,21 @@
 .center-dot {
   width: 20px;
   height: 20px;
-  background: radial-gradient(circle, #fff 0%, var(--color-primary) 100%);
+  background: radial-gradient(circle, #fff 0%, #FFD700 100%);
   border-radius: var(--radius-full);
-  box-shadow: 0 0 20px var(--color-primary);
+  box-shadow: 0 0 20px #FFD700;
 }
 
 /* Center target near state */
 .flower-center-target.near .center-ring {
-  border-color: #00ff88;
+  border-color: #FF69B4;
   border-style: solid;
   animation: none;
 }
 
 .flower-center-target.near .center-dot {
-  background: radial-gradient(circle, #fff 0%, #00ff88 100%);
-  box-shadow: 0 0 30px #00ff88;
+  background: radial-gradient(circle, #fff 0%, #FF69B4 100%);
+  box-shadow: 0 0 30px #FF69B4;
 }
 
 /* ==========================================================================
@@ -141,7 +141,7 @@
 .petal svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 5px rgba(30, 144, 255, 0.5));
+  filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5));
 }
 
 .petal:active {
@@ -150,7 +150,7 @@
 
 .petal.dragging {
   transform: scale(1.1) !important;
-  filter: drop-shadow(0 0 15px rgba(30, 144, 255, 0.8));
+  filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
   z-index: 100 !important;
 }
 
@@ -160,7 +160,7 @@
 }
 
 .petal.placed svg {
-  filter: drop-shadow(0 0 10px rgba(30, 144, 255, 0.6));
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
 }
 
 /* ==========================================================================
@@ -175,7 +175,7 @@
 }
 
 .flower-progress .progress-count {
-  color: var(--color-primary);
+  color: #FFD700;
   font-weight: bold;
 }
 
@@ -241,10 +241,10 @@
 .necklace-title {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  color: var(--color-primary);
+  color: #FFD700;
   letter-spacing: 0.2em;
   margin-bottom: var(--spacing-lg);
-  text-shadow: var(--glow-text);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   animation: pulseGlow 2s ease-in-out infinite;
 }
 
@@ -252,10 +252,10 @@
   width: 220px;
   height: 220px;
   margin: 0 auto var(--spacing-lg);
-  border: 3px solid var(--color-primary);
+  border: 3px solid #FFD700;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--glow-lg);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
   background: #fff;
 }
 
@@ -277,10 +277,10 @@
 .necklace-hint {
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  color: var(--color-success);
+  color: #FF69B4;
   padding: var(--spacing-md);
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid var(--color-success);
+  background: rgba(255, 105, 180, 0.1);
+  border: 1px solid #FF69B4;
   border-radius: var(--radius-md);
   animation: pulseGlow 1.5s ease-in-out infinite;
 }
@@ -289,9 +289,9 @@
   margin-top: var(--spacing-lg);
   padding: var(--spacing-md) var(--spacing-xl);
   background: transparent;
-  border: 2px solid var(--color-primary);
+  border: 2px solid #FFD700;
   border-radius: var(--radius-md);
-  color: var(--color-primary);
+  color: #FFD700;
   font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: 0.15em;
@@ -301,9 +301,9 @@
 
 .necklace-continue-btn:hover,
 .necklace-continue-btn:active {
-  background: var(--color-primary);
+  background: #FFD700;
   color: var(--color-bg);
-  box-shadow: var(--glow-md);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
 @keyframes pulseGlow {
