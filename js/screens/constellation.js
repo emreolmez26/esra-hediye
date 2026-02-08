@@ -335,8 +335,8 @@ const ConstellationScreen = {
     // Kolye reveal ekranını göster
     await this.showNecklaceReveal();
 
-    // Sonraki aşamaya geç
-    this.goToNextStage();
+    // Uygulama bitti - final ekranını göster
+    this.showFinalScreen();
   },
 
   /**
@@ -401,7 +401,37 @@ const ConstellationScreen = {
   },
 
   /**
-   * Sonraki aşamaya geç
+   * Final ekranı - Uygulama sonu
+   */
+  showFinalScreen() {
+    const finalOverlay = document.createElement("div");
+    finalOverlay.className = "necklace-overlay";
+    finalOverlay.innerHTML = `
+      <div class="necklace-content" style="text-align: center;">
+        <div style="font-size: 4rem; margin-bottom: 20px;">💕</div>
+        <div class="necklace-title" style="font-size: 1.8rem; margin-bottom: 30px;">
+          Seni Çok Seviyorum
+        </div>
+        <div style="font-size: 3rem; animation: heartbeat 1s ease-in-out infinite;">
+          ❤️
+        </div>
+        <style>
+          @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+          }
+        </style>
+      </div>
+    `;
+    document.body.appendChild(finalOverlay);
+    
+    setTimeout(() => {
+      finalOverlay.classList.add("show");
+    }, 100);
+  },
+
+  /**
+   * Sonraki aşamaya geç (artık kullanılmıyor)
    */
   goToNextStage() {
     Transitions.goto("constellation-screen", "camera-screen", {
