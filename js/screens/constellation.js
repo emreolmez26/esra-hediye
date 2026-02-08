@@ -378,7 +378,7 @@ const ConstellationScreen = {
           🔍 Görüntü netleşmiyor...
         </div>
         <div class="necklace-hint">
-          Belki de gerçeğine bakmalısın... 💎
+          Belki de gerçeğine bakmalısın... Masaya bak 💎
         </div>
         <button class="necklace-continue-btn">DEVAM ET</button>
       </div>
@@ -415,7 +415,7 @@ const ConstellationScreen = {
       </div>
     `;
     document.body.appendChild(finalOverlay);
-    
+
     setTimeout(() => {
       finalOverlay.classList.add("show");
     }, 100);
