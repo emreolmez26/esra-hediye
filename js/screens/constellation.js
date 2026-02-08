@@ -371,18 +371,14 @@ const ConstellationScreen = {
     overlay.innerHTML = `
       <div class="necklace-content">
         <div class="necklace-title">SENİN İÇİN BİR SÜRPRİZ</div>
-        <div class="necklace-image" style="position: relative;">
-          <img src="assets/cicek.png" alt="Kolye" style="filter: blur(15px);">
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(0,0,0,0.8); padding: 15px 20px; border-radius: 8px; border: 2px solid #ff4444;">
-            <div style="color: #ff4444; font-size: 0.9rem; font-weight: bold; margin-bottom: 5px;">⚠️ SİSTEM HATASI</div>
-            <div style="color: #ffcc00; font-size: 0.75rem;">Görsel yüklenemedi</div>
-          </div>
+        <div class="necklace-image">
+          <img src="assets/cicek.png" alt="Kolye" style="filter: blur(12px);">
         </div>
         <div class="necklace-message">
-          Hmm... Görsel açılmadı ama sorun değil...
+          🔍 Görüntü netleşmiyor...
         </div>
         <div class="necklace-hint">
-          Oturduğun masaya bak bir istersen 💎
+          Belki de gerçeğine bakmalısın... 💎
         </div>
         <button class="necklace-continue-btn">DEVAM ET</button>
       </div>

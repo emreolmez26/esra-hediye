@@ -77,7 +77,7 @@ const Particles = {
       velocities[i] = (Math.random() - 0.5) * 0.02;
       velocities[i + 1] = (Math.random() - 0.5) * 0.02;
       velocities[i + 2] = (Math.random() - 0.5) * 0.01;
-      
+
       sizes[i / 3] = Math.random() * 0.5 + 0.3;
     }
 
@@ -109,55 +109,62 @@ const Particles = {
    * Yıldız şeklinde texture oluştur
    */
   createStarTexture() {
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     canvas.width = 64;
     canvas.height = 64;
-    const ctx = canvas.getContext('2d');
-    
+    const ctx = canvas.getContext("2d");
+
     const centerX = 32;
     const centerY = 32;
-    
+
     // Radial gradient ile parlak merkez
-    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 32);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.8)');
-    gradient.addColorStop(0.2, 'rgba(255, 255, 200, 0.5)');
-    gradient.addColorStop(0.4, 'rgba(255, 220, 150, 0.2)');
-    gradient.addColorStop(1, 'rgba(255, 200, 100, 0)');
-    
+    const gradient = ctx.createRadialGradient(
+      centerX,
+      centerY,
+      0,
+      centerX,
+      centerY,
+      32,
+    );
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.1, "rgba(255, 255, 255, 0.8)");
+    gradient.addColorStop(0.2, "rgba(255, 255, 200, 0.5)");
+    gradient.addColorStop(0.4, "rgba(255, 220, 150, 0.2)");
+    gradient.addColorStop(1, "rgba(255, 200, 100, 0)");
+
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 64, 64);
-    
+
     // 4 köşeli yıldız ışınları
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
     ctx.lineWidth = 1.5;
-    
+
     // Yatay ışın
     ctx.beginPath();
     ctx.moveTo(0, centerY);
     ctx.lineTo(64, centerY);
     ctx.stroke();
-    
+
     // Dikey ışın
     ctx.beginPath();
     ctx.moveTo(centerX, 0);
     ctx.lineTo(centerX, 64);
     ctx.stroke();
-    
+
     // Çapraz ışınlar (daha ince)
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
     ctx.lineWidth = 1;
-    
+
     ctx.beginPath();
     ctx.moveTo(8, 8);
     ctx.lineTo(56, 56);
     ctx.stroke();
-    
+
     ctx.beginPath();
     ctx.moveTo(56, 8);
     ctx.lineTo(8, 56);
     ctx.stroke();
-    
+
     const texture = new THREE.CanvasTexture(canvas);
     return texture;
   },
