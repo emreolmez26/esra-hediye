@@ -378,7 +378,7 @@ const ConstellationScreen = {
           Bu çiçeğin fiziksel hali seni bekliyor...
         </div>
         <div class="necklace-hint">
-          İpucu: Reis'in cebine bak 💎
+          Oturduğun masaya bak bir istersen 💎
         </div>
         <button class="necklace-continue-btn">DEVAM ET</button>
       </div>
