@@ -408,19 +408,10 @@ const ConstellationScreen = {
     finalOverlay.className = "necklace-overlay";
     finalOverlay.innerHTML = `
       <div class="necklace-content" style="text-align: center;">
-        <div style="font-size: 4rem; margin-bottom: 20px;">💕</div>
-        <div class="necklace-title" style="font-size: 1.8rem; margin-bottom: 30px;">
-          Seni Çok Seviyorum
+        <div style="font-size: 2rem; margin-bottom: 30px;">✍️</div>
+        <div class="necklace-title" style="font-size: 1.4rem; margin-bottom: 20px; line-height: 1.6;">
+          Her güzel hikayenin<br>bir yazarı var...
         </div>
-        <div style="font-size: 3rem; animation: heartbeat 1s ease-in-out infinite;">
-          ❤️
-        </div>
-        <style>
-          @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-          }
-        </style>
       </div>
     `;
     document.body.appendChild(finalOverlay);
