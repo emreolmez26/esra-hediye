@@ -410,7 +410,7 @@ const ConstellationScreen = {
       <div class="necklace-content" style="text-align: center;">
         <div style="font-size: 2rem; margin-bottom: 30px;">✍️</div>
         <div class="necklace-title" style="font-size: 1.4rem; margin-bottom: 20px; line-height: 1.6;">
-          Her güzel hikayenin<br>bir yazarı var...
+          Her güzel hikayenin<br>bir senaristi var ...
         </div>
       </div>
     `;
